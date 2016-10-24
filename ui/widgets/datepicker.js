@@ -154,7 +154,6 @@ function Datepicker() {
 	$.extend( this._defaults, this.regional[ "" ] );
 	this.regional.en = $.extend( true, {}, this.regional[ "" ] );
 	this.regional[ "en-US" ] = $.extend( true, {}, this.regional.en );
-	this.dpDiv = datepicker_bindHover( $( "<div id='" + this._mainDivId + "' class='ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all'></div>" ) );
 }
 
 $.extend( Datepicker.prototype, {
@@ -166,7 +165,7 @@ $.extend( Datepicker.prototype, {
 
 	// TODO rename to "widget" when switching to widget factory
 	_widgetDatepicker: function() {
-		return this.dpDiv;
+		return datepicker_bindHover( $( "<div id='" + this._mainDivId + "' class='ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all'></div>" ) );
 	},
 
 	/* Override the default settings for all instances of the date picker.
@@ -206,7 +205,7 @@ $.extend( Datepicker.prototype, {
 			selectedDay: 0, selectedMonth: 0, selectedYear: 0, // current selection
 			drawMonth: 0, drawYear: 0, // month being drawn
 			inline: inline, // is datepicker inline or not
-			dpDiv: ( !inline ? this.dpDiv : // presentation div
+			dpDiv: ( !inline ? datepicker_bindHover( $( "<div id='" + this._mainDivId + "' class='ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all'></div>" ) ) : // presentation div
 			datepicker_bindHover( $( "<div class='" + this._inlineClass + " ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all'></div>" ) ) ) };
 	},
 
